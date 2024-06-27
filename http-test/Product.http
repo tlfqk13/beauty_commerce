@@ -1,0 +1,5 @@
+### 찜하기등록
+POST localhost:8083/api/product/2/wish-list
+
+### 찜한상품조회
+GET localhost:8083/api/wish-list

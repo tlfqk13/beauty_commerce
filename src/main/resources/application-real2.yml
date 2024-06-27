@@ -1,0 +1,97 @@
+server:
+  port: 8082
+
+spring:
+  config:
+    activate:
+      on-profile: real2
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ENC(OBSmTwddpb6zH5kvBJ4jgShfZM9k/QGU09ucd9fXPC79Sz/Yn50eXCbcyn/4w3OmPoXSSpoRoQ/szqI7mE1dIP8cgYDCsBiJ4k0s7ulvm0TqmjEm+wvG1vcbonVhb0GTXfrddcjpchojinWWGtha/UqyMNCO1Ezf/n8sSZqK9b69aTJ10UtNunCbDdpKKQZSItP1v7U0EhA=)
+    username: ENC(KMyPoMgk0ofPdGECtQL0jQ==)
+    password: ENC(znRtpqVjbrbdpVi47WKMLXa91SSHlBil)
+    hikari:
+      pool-name: HikariCP
+      connection-timeout: 10000
+      maximum-pool-size: 10
+      max-lifetime: 1800000
+
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    cache: false
+
+  servlet:
+    multipart:
+      max-file-size: 128MB
+      max-request-size: 128MB
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 1000
+    database: MYSQL
+    open-in-view: false
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: false
+
+jwt:
+  header: Authorization
+  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    property:
+      prefix: ENC(
+      suffix: )
+
+fcm:
+  key:
+    path: ENC(sv3ccXtpk67RNw50hAHasWJ3Y8bcivnQ+bA++6LmK3Tw0+9kFzXGhxU5iSup69g6RYyKTvqOhxYZFyoads1CGt9Uz4ew5sdA)
+    scope: ENC(qVjPCPQsmuN76Ru4cvusEwVha6N20q9JA8MI72fSJcmhN/u2hJ0r819k5Q1PQynJl46Au+E7s1z9a83PUWj4xVu4mPp4dQAxV3JIKlPL7eIXuPjpj0nkZg==)
+
+
+shop-by:
+  client-id: ENC(nFE/Ls4K4twoxSnaFT8wXKzu2VzNC6PiQrUtf1/jqG2niUp3u6uZcg==)
+  url: https://shop-api.e-ncp.com
+  accept-header: application/json
+  version-header: 1.0
+  platform-header: PC
+  login-url: /oauth/token
+  send-authentication-number-url: /authentications
+  check-member-url: /profile
+  password-no-authentication-certificated-by-sms: /password/no-authentication/certificated-by-sms
+  products: /products
+  orders-url: /orders
+  best-category-no: 463397
+  new-category-no: 468833
+  event-category-no: 441413
+  kit-category-no: 287907
+  origin-category-no: 506721
+  perfume-category-no: 441401
+  zero-perfume-category-no: 768231
+  weekly-special-category-no: 537473
+  experience-category-no: 511309
+  beauty-item-category-no: 441417
+  sample-category-no: 441141
+  today-price-category-no: 607553
+  sampleKit-img: https://rlyfaazj0.toastcdn.net/SERVICE/20231017/314e2b9d-7d53-46c9-89f9-b89a673255d1.png
+  group-purchase-img: https://shopby-images.cdn-nhncommerce.com/SERVICE/20240226/fc05c028-c075-4729-880d-c8f99ffc3cee.png
+  section-no: 275635
+  group-purchase-category-no: 657379
+  server-profile: prod
+
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: on
+
+logging:
+  config: classpath:log4j2.yml

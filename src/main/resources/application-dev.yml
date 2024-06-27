@@ -1,0 +1,30 @@
+server:
+  port: 8888
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:
+    username:
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 1000
+    database: MYSQL
+
+  logging:
+    level:
+      org.hibernate.SQL: debug
+
+  decorator:
+    datasource:
+      p6spy:
+        enable-logging: true

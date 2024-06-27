@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://shop-api.e-ncp.com/payments/ncp_pay.js"></script>
+    <script type="text/javascript" src="https://stgstdpay.inicis.com/stdjs/INIStdPay.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <title> ShopbyPayment</title>
+    <script type="text/javascript">
+        var msg;
+        const data = {
+            "orderSheetNo": "202404030128171885",
+            "shippingAddress": {
+                "receiverZipCd": "14096",
+                "receiverAddress": "경기도 안양시 안양로13번길 42",
+                "receiverJibunAddress": "경기도 안양시 만안구 안양동 1286-7",
+                "receiverDetailAddress": "",
+                "receiverName": "손동규",
+                "addressName": "123",
+                "receiverContact1": "010-4902-0719",
+                "countryCd": "KR"
+            },
+            "member": true,
+            "deliveryMemo": "부재시 경비실에 맡겨주세요",
+            "orderer": {
+                "ordererName": "손동규",
+                "ordererEmail": "tlfqk13@naver.com",
+                "ordererContact1": "010-4902-0719",
+                "ordererContact2": "031-0000-0000"
+            },
+            "orderTitle": "커스텀 키트",
+            "subPayAmt": "0",
+            /*    "pgType": "INICIS",
+                "payType": "CREDIT_CARD",*/
+            "pgType": "NONE",
+            "payType": "ACCOUNT",
+            "bankAccountToDeposit": {
+                "bankCode": "NH",
+                "bankAccount": "3010245019011",
+                "bankDepositorName": "주식회사 토브앤바나"
+            },
+            "clientReturnUrl": "http://127.0.0.1:8888/payment/groupPurchaseInfo",
+        };
+
+        /*        NCPPay.setConfiguration({
+                    'clientId': 'PmiWcLocajAYNrAejwZXRg==', // shopby에서 발급받은 clientId
+                    'confirmUrl': 'http://127.0.0.1:8080/payment/groupPurchaseInfo', // 결과를 리턴받을 url
+                    'platform': 'PC', // 'PC or MOBILE_WEB or AOS or IOS'
+                    'accessToken': '18S6M8Hedjz9kdl4tIRW0NPp038' // 로그인한 사람의 accessToken
+                });*/
+
+        NCPPay.setConfiguration({
+            'clientId': 'NzcBNCQecoGxIh24L5yBJA==', // shopby에서 발급받은 clientId
+            'confirmUrl': 'http://127.0.0.1:8888/payment/groupPurchaseInfo',
+            'platform': 'PC', // 'PC or MOBILE_WEB or AOS or IOS'
+            //'accessToken': accessToken // 로그인한 사람의 accessToken
+            'accessToken': 'tXe2DjvbDea112ueNeiMdizHtFE' // 로그인한 사람의 accessToken
+            //'accessToken': 'BpY_TdzINKjtv_RF3Ib1yE695wk' // 로그인한 사람의 accessToken
+        });
+        NCPPay.reservation(data,
+            function (rsp) {
+                //alert("결제완료 되었습니다.")
+            });
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

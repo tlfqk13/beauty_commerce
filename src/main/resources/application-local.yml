@@ -1,0 +1,90 @@
+server:
+  port: 8888
+
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ENC(ZDnj/gU9yHZ2GZyEWQRF1hOdGlJ/ce+xFh0UlnHL0RbAOSHFD66TYaI1rv0vBDHURj4983Tkb7+P680YyWRiVxZxI48CJUN9TPpTHfuzxUim8Yghh38fpBviE+UFbBvWKlQ3/iq2kQOR++e0qcg2wOFRxKTPAlTxO/ryeiLHZSCmV4vpH0vl3c5S9RWnvXDJvI0hGxsKeYGeg3vNv92pBw==)
+    username: ENC(9AXilojUfy2D0AgKGAjUGg==)
+    password: ENC(8LnqWu6xxlTpdnUo8lkivwbTxYub1hxg)
+    hikari:
+      pool-name: HikariCP
+      connection-timeout: 10000
+      maximum-pool-size: 10
+      max-lifetime: 1800000
+  output:
+    ansi:
+      enabled: always
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    cache: false
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 1000
+    database: MYSQL
+    open-in-view: false
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    property:
+      prefix: ENC(
+      suffix: )
+
+jwt:
+  header: Authorization
+  secret: jwtlocalSecretjwtlocalSecretjwtlocalSecretjwtlocalSecretjwtlocalSecretjwtlocalSecretjwtlocalSecretjwtlocalSecret
+
+fcm:
+  key:
+    path : ENC(C2Vt+fm24rTqZKFRUumOy3qIf9OodS31QHGUwYxT8tUPpLJA9pt9s7BQjWYfGVTxFySzDoociD4yHehImsWywUEh0IV0Ce33)
+    scope : ENC(No5cU9vRny6EkwK0XJfLB8vIBRTc8V79v/pZWg+lxhXXB5Dign/H7aDu+eWI0P5x/9lBYt1OHw06PucU15TU9COYa6U1OUg5NuG+s7p/RycubqVinvVg4A==)
+
+shop-by:
+  client-id: ENC(+kL1/ZGO0ru/JmC1b8ownA2DcWw2F/OZqGyLGTNK9jDjCFxvA+Vdtw==)
+  url: https://shop-api.e-ncp.com
+  accept-header: application/json
+  version-header: 1.0
+  platform-header: PC
+  login-url: /oauth/token
+  send-authentication-number-url: /authentications
+  check-member-url: /profile
+  password-no-authentication-certificated-by-sms: /password/no-authentication/certificated-by-sms
+  products: /products
+  orders-url: /orders
+  best-category-no : 436329
+  new-category-no : 463063
+  event-category-no : 436331
+  kit-category-no : 287921
+  origin-category-no : 506887
+  weekly-special-category-no : 537079
+  perfume-category-no : 440063
+  zero-perfume-category-no : 768232
+  experience-category-no : 511307
+  beauty-item-category-no : 440065
+  sample-category-no : 288411
+  today-price-category-no : 609535
+  group-purchase-category-no : 653677
+  sampleKit-img : https://rlyfaazj0.toastcdn.net/SERVICE/20231017/e42fae0f-ef68-49f2-815e-4c142b06ece6.png
+  group-purchase-img : https://shopby-images.cdn-nhncommerce.com/SERVICE/20240226/9526559d-0447-4e6d-9b83-90541c54b21c.png
+  section-no : 266953
+  server-profile : dev

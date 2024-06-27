@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>주문 성공!!!!!!!!!!!!!!!!</h2>
+<span id="orderNo" th:text="${orderNo}" hidden="hidden"></span>
+<span id="accessToken" th:text="${accessToken}" hidden="hidden"></span>
+
+<!--<script type="text/javascript">
+    const orderNo = document.getElementById("orderNo").innerText;
+    const accessToken = document.getElementById("accessToken").innerText;
+    setTimeout(() => {
+        window.location.href = "http://127.0.0.1:8080/api/order-finish/" + orderNo + "?accessToken=" + accessToken;
+    }, 3000);
+</script>-->
+</body>
+</html>

@@ -1,0 +1,122 @@
+Configuration:
+  name: Default
+  status: info
+
+  Properties:
+    Property:
+      name: log-path
+      value: "/home/ubuntu/app/step2"
+
+  Appenders:
+    Console:
+      name: Console_Appender
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"
+    RollingFile:
+      - name: RollingFile_Appender
+        fileName: ${log-path}/rollingfile.log
+        filePattern: "${log-path}/archive/rollingfile.log_%d{yyyy-MM-dd}.gz"
+        PatternLayout:
+          pattern: "%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"
+        Policies:
+          TimeBasedTriggeringPolicy:
+            Interval: 1
+            modulate: true
+        DefaultRollOverStrategy:
+          Delete:
+            basePath: "${log-path}/archive"
+            maxDepth: "1"
+            IfAccumulatedFileCount:
+              exceeds: 31
+        Filters:
+          ThresholdFilter:
+            level: debug
+      - name: RollingFile_Appender_Error
+        fileName: ${log-path}/rollingfile-error.log
+        filePattern: "${log-path}/archive/rollingfile-error.log_%d{yyyy-MM-dd}.gz"
+        PatternLayout:
+          pattern: "%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"
+        Policies:
+          TimeBasedTriggeringPolicy:
+            Interval: 1
+            modulate: true
+        DefaultRollOverStrategy:
+          Delete:
+            basePath: "${log-path}/archive"
+            maxDepth: "1"
+            IfAccumulatedFileCount:
+              exceeds: 31
+        Filters:
+          ThresholdFilter:
+            level: warn
+            onMismatch: deny
+      - name: RollingFile_Appender_Home
+        fileName: ${log-path}/rollingfile-home.log
+        filePattern: "${log-path}/archive/rollingfile-home.log_%d{yyyy-MM-dd}.gz"
+        PatternLayout:
+          pattern: "%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"
+        Policies:
+          TimeBasedTriggeringPolicy:
+            Interval: 1
+            modulate: true
+        DefaultRollOverStrategy:
+          Delete:
+            basePath: "${log-path}/archive"
+            maxDepth: "1"
+            IfAccumulatedFileCount:
+              exceeds: 31
+        Filters:
+          ThresholdFilter:
+            level: debug
+      - name: RollingFile_Appender_Product
+        fileName: ${log-path}/rollingfile-product.log
+        filePattern: "${log-path}/archive/rollingfile-product.log_%d{yyyy-MM-dd}.gz"
+        PatternLayout:
+          pattern: "%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"
+        Policies:
+          TimeBasedTriggeringPolicy:
+            Interval: 1
+            modulate: true
+        DefaultRollOverStrategy:
+          Delete:
+            basePath: "${log-path}/archive"
+            maxDepth: "1"
+            IfAccumulatedFileCount:
+              exceeds: 31
+        Filters:
+          ThresholdFilter:
+            level: debug
+  Loggers:
+    Logger:
+      - name: com.example.sampleroad
+        additivity: false
+        level: info
+        AppenderRef:
+          - ref: RollingFile_Appender
+          - ref: Console_Appender
+          - ref: RollingFile_Appender_Error
+      - name: com.example.sampleroad.service.HomeService
+        additivity: false
+        level: info
+        AppenderRef:
+          - ref: RollingFile_Appender_Home
+      - name: com.example.sampleroad.service.ProductServiceImpl
+        additivity: false
+        level: info
+        AppenderRef:
+          - ref: RollingFile_Appender_Product
+      - name: org.hibernate.SQL
+        additivity: false
+        level: info
+        AppenderRef:
+          - ref: Console_Appender
+      - name: org.springframework.transaction
+        additivity: false
+        level: info
+        AppenderRef:
+          - ref: Console_Appender
+    Root:
+      level: info
+      AppenderRef:
+        ref: Console_Appender

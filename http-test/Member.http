@@ -1,0 +1,94 @@
+### 회원가입
+POST localhost:8080/api/join
+Content-Type: application/json
+
+{
+  "birthday" : "19901111",
+  "ci" : "MEIQnKekQm1Pzc9iUzBLH1dh7EHo3eQvsAI+Mtl9zDT4LKpZ2RdnibZ3WEHVkCb4CpKz8YVcWMyzlfMYFwaTOw==",
+  "directMailAgreed" : 1,
+  "joinTermsAgreements" : ["String, TEST"],
+  "memberId" : "testUser1234",
+  "memberName" : "홍길동",
+  "mobileNo" : "010-0000-0000",
+  "nickname" : "닉네임",
+  "password" : "123456",
+  "pushNotificationAgreed" : 1,
+  "sex" : "남성",
+  "smsAgreed" : 1
+}
+
+### 로그인
+POST localhost:8080/api/login
+Content-Type: application/json
+
+{
+  "memberLoginId": "testUse2",
+  "password": "123456"
+}
+> {%
+ client.global.set("jwtToken", response.body.result.accessToken);
+ %}
+
+### 인증번호 발송
+POST localhost:8080/api/send-authentication-number
+Content-Type: application/json
+
+{
+  "memberNo": ,
+  "notiAccount": "",
+  "memberName": ""
+}
+
+### 아이디 찾기
+POST localhost:8080/api/member/find-id
+Content-Type: application/json
+
+{
+  "mobileNo": "",
+  "memberName": ""
+}
+
+### ci 중복 체크
+GET localhost:8080/api/member/ci-check?ci=12345
+
+### 로그인 id 중복 체크
+GET localhost:8080/api/member/login-id-check?memberLoginId=id12345
+
+### 닉네임 중복 체크
+GET localhost:8080/api/member/nickname-check?nickname=1234
+
+### 이메일 중복 체크
+GET localhost:8080/api/member/email-check?email=1234
+
+### 회원정보 수정
+PUT localhost:8080/api/member
+Content-Type: application/json
+Authorization: {{jwtToken}}
+
+{
+  "pushNotificationAgreed" : 0,
+  "smsAgreed" : 0,
+  "directMailAgreed" : 0,
+  "nickname" : "닉네임",
+  "sex" : "남성",
+  "email": "test@gmail.com",
+  "refundBank": "WOORI",
+  "refundBankAccount": "100010001000",
+  "refundBankDepositorName": "홍길동",
+  "profileImageURL": "",
+  "skinType":  ["String", "TEST", "String", "TEST"],
+  "skinTrouble":  ["String", "TEST", "String", "TEST"],
+  "preference":  ["String", "TEST", "String", "TEST"]
+}
+
+### 회원정보 조회
+GET localhost:8080/api/member
+Authorization: {{jwtToken}}
+
+### 회원탈퇴
+DELETE localhost:8080/api/member
+Content-Type: application/json
+
+{
+  "memberNo": "123"
+}

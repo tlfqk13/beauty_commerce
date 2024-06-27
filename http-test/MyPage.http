@@ -1,0 +1,3 @@
+### 마이페이지 상세정보 조회
+GET localhost:8080/api/my-page
+Authorization: {{jwtToken}}

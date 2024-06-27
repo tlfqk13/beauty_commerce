@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/app/step2
+    overwrite: yes
+
+permissions:
+  - object: /
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+
+hooks:
+  AfterInstall:
+    - location: deploy.sh # nginx와 연결되어 있지 않은 포트로 스프링 부트 시작.
+      timeout: 180
+      runas: ubuntu

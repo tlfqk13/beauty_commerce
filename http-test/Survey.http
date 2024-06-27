@@ -1,0 +1,18 @@
+### 설문 등록
+POST localhost:8080/api/survey
+Content-Type: application/json
+
+{
+  "skinType": "건성",
+  "skinTrouble":["미백,주름,모공,여드름"],
+  "preference": "촉촉한",
+  "memberNo": "123"
+}
+
+### 설문조회
+GET localhost:8080/api/survey
+Content-Type: application/json
+
+{
+  "memberNo": "123"
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h2>주문 실패!!!!!!!!!!!!!!!!</h2>
+  <span id="message" th:text="${message}" hidden="hidden"></span>
+</body>
+<script>
+    // message 값을 JavaScript 변수로 가져옴
+    const message = document.getElementById("message").innerText;
+    // alert 창으로 메시지 출력
+    alert(message);
+</script>
+</html>

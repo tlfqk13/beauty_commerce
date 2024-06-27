@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Certificate</title>
+</head>
+<body id="body">
+<span id="clientId" th:text="${clientId}" hidden="hidden"></span>
+</body>
+
+<script>
+    const clientId = $("#clientId").text();
+    console.log(clientId)
+    const button = document.getElementById("button");
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://shop-api.e-ncp.com/kcp/id-verification/form?returnUrl=https%3A%2F%2Fsampleroad-server.com%2Fcertificate%2Fcallback",
+        "method": "GET",
+        "headers": {
+            "version": "1.0",
+            "clientid": clientId,
+            "platform": "PC"
+        }
+    }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        let kcpForm = response;
+        let button = `<button type="submit" id="button" form="form_auth">인증하기</button>`;
+        $('#body').append(kcpForm);
+        $('#body').append(button);
+        document.getElementById("button").click();
+    });
+</script>
+</html>

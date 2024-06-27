@@ -1,0 +1,23 @@
+### 리뷰등록
+POST localhost:8080/api/review
+Content-Type: application/json
+Authorization: {{jwtToken}}
+
+{
+  "optionNo": 1,
+  "orderOptionNo": 1,
+  "content": "상품 후기입니다.",
+  "rate": 0,
+  "urls": [
+    "//rlyfaazj0.toastcdn.net/20210529/104125.475133000/17.jpg",
+    "//rlyfaazj0.toastcdn.net/20210529/104150.964710000/11.jpg"
+  ]
+}
+
+### 리뷰조회
+GET localhost:8080/api/review
+Content-Type: application/json
+
+{
+  "shopByMemberId": "s123456"
+}
